@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['test']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 
+         'functions', 
+         'deploy', 
+         'slack-billing-notifications2', 
+         '--entry-point=notifySlack',
+         '--source=.', 
+         '--runtime=nodejs8', 
+         '--trigger-topic=billing-alert']
