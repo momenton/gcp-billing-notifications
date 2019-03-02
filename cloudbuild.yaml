@@ -7,7 +7,7 @@ steps:
   args: ['beta', 
          'functions', 
          'deploy', 
-         'slack-billing-notifications', 
+         'slack-billing-notification', 
          '--entry-point=notifySlack',
          '--source=.', 
          '--runtime=nodejs8', 
