@@ -11,7 +11,7 @@ const BOT_ACCESS_TOKEN = process.env.BOTTOKEN;
 
 exports.notifySlack = async (data, context) => {
   
-	const pubsubMessage = data;
+    const pubsubMessage = data;
     const pubsubData = JSON.parse(Buffer.from(pubsubMessage.data, 'base64').toString());
     const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2})
     const budgetId = pubsubMessage.attributes.budgetId;
