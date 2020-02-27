@@ -47,9 +47,11 @@ exports.notifySlack = async (data, context) => {
         location: DATASET_LOCATION,
     };
 
-  
-    const [results]  = await bigquery.query(options);
-    
+    const [job] = await bigquery.createQueryJob(options);
+
+    // Wait for the query to finish
+    const [results] = await job.getQueryResults();
+ 
     if (results.length > 0 && results[0].cnt > 1 ){
         return;
     }
